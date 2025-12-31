@@ -11,6 +11,10 @@
 
 </div>
 
-Desktop software to parse .scrobbler.log data to Last.FM. Specifically designed for integration with iPod 5th Generation.
+Desktop software to upload iPod log data to **last.fm**. Specifically designed for integration with the iPod 5th Generation.
 
-*Disclaimer: This is an older project of mine*
+> Disclaimer: This is an older project of mine, made over the course of a weekend.
+
+<p align="center">
+  <img src="assets/preview.png" width="49%"/>
+</p>
