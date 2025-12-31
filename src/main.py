@@ -6,7 +6,7 @@ from PySide6.QtWidgets import (
     QFileDialog,
 )
 from PySide6.QtCore import QThreadPool, Signal
-from PySide6.QtGui import QIcon
+from PySide6.QtGui import QIcon, QPixmap
 from pathlib import Path
 import sys
 import os
@@ -32,6 +32,7 @@ CREDENTIALS_PATH = f"{PROJECT_DIR}/.user"
 WINDOW_ICON_PATH = f"{ASSETS_DIR}/logo.png"
 HIDDEN_ICON_PATH = f"{ASSETS_DIR}/hidden.png"
 SHOW_ICON_PATH = f"{ASSETS_DIR}/show.png"
+USER_ICON_PATH = f"{ASSETS_DIR}/lastfm-logo.png"
 WINDOW_TITLE = "Scrobbler"
 WINDOW_WIDTH = 240
 WINDOW_HEIGHT = 360
@@ -105,6 +106,9 @@ class MyWindow(QMainWindow):
 
         # Sets filepath text to green
         self.ui.InsertFilepath.setStyleSheet("color: green;")
+
+        self.ui.image.setPixmap(QPixmap(USER_ICON_PATH))
+        self.ui.image.setScaledContents(True)
 
         if os.path.exists(CREDENTIALS_PATH):
             self.auto_login()
@@ -184,7 +188,7 @@ class MyWindow(QMainWindow):
     def login(self, user) -> None:
         ''' User credentials verified, and valid client session created '''
         self.ui.stackedWidget.setCurrentIndex(FUNCTION_PAGE)
-        self.ui.User.setText(u"Logged in as: " + user)
+        self.ui.User.setText(f"Logged in as: <b>{user}</b>")
         self.ui.LoginFailure.setStyleSheet("color: transparent;")
         self._password_visablity = False
 
